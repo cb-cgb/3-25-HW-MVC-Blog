@@ -1,0 +1,17 @@
+﻿@model  Blog;
+
+@{
+    ViewData["Title"] = "AddPostForm";
+}
+
+<h1>Add New Post</h1>
+
+
+<div class="container" margin-top:30 px>
+   
+  <h2> Enter Text:</h2>
+  <form method="post" action ="/Home/AddPost">
+   <textarea class="form-control" rows="10" name="BlogText"></textarea>
+   <button class="btn btn-primary ">Submit Post</button>
+  </form>
+</div>
