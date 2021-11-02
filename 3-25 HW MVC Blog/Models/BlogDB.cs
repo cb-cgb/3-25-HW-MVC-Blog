@@ -66,16 +66,16 @@ namespace _3_25_HW_MVC_Blog.Models
             }
         }
 
-        public void AddPost(Blog b)
+        public int AddPost(Blog b)
         {
             using (SqlConnection conn = new SqlConnection(_conn))
             using (SqlCommand cmd = conn.CreateCommand())
             {
                 cmd.CommandText = @"INSERT INTO BLOGPOST (BlogText,DateAdded) 
-                                  SELECT @text, GetDate()";
+                                  SELECT @text, GetDate() SELECT SCOPE_IDENTITY()";
                 cmd.Parameters.AddWithValue("@text", b.BlogText);
                 conn.Open();
-                cmd.ExecuteNonQuery();
+                return b.BlogId = (int)(Decimal)cmd.ExecuteScalar();
             }
         }
 
