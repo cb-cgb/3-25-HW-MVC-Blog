@@ -66,7 +66,7 @@ namespace _3_25_HW_MVC_Blog.Controllers
         [HttpPost]
         public IActionResult AddComment(BlogComment c)
         {
-            Response.Cookies.Append("authorCookie", $"{c.CommentAuthor}");
+            Response.Cookies.Append("authorCookie", $"{c.CommentAuthor}");//sets/updates the cookie
 
             BlogDB db = new BlogDB(_conn);
             db.AddComment(c);

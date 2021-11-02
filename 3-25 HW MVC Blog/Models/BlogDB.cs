@@ -66,7 +66,7 @@ namespace _3_25_HW_MVC_Blog.Models
             }
         }
 
-        public int AddPost(Blog b)
+        public void AddPost(Blog b)
         {
             using (SqlConnection conn = new SqlConnection(_conn))
             using (SqlCommand cmd = conn.CreateCommand())
@@ -75,7 +75,7 @@ namespace _3_25_HW_MVC_Blog.Models
                                   SELECT @text, GetDate() SELECT SCOPE_IDENTITY()";
                 cmd.Parameters.AddWithValue("@text", b.BlogText);
                 conn.Open();
-                return b.BlogId = (int)(Decimal)cmd.ExecuteScalar();
+                b.BlogId=  (int)(Decimal)cmd.ExecuteScalar();
             }
         }
 
